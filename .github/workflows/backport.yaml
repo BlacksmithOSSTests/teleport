@@ -18,7 +18,7 @@ jobs:
   backport-pull-request:
     name: Backport Pull Request
     if: github.event.pull_request.merged == true
-    runs-on: ubuntu-latest
+    runs-on: blacksmith-4vcpu-ubuntu-2204
     steps:
       - name: Generate GitHub Token
         id: generate_token
@@ -38,7 +38,7 @@ jobs:
           path: .github/shared-workflows
           ref: main
       - name: Installing Go
-        uses: actions/setup-go@v5
+        uses: useblacksmith/setup-go@v6
         with:
           go-version: 'stable'
         # Run "check" subcommand on bot.

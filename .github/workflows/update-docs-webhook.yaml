@@ -11,7 +11,7 @@ on:
 jobs:
   update-webhook:
     name: Update docs webhook
-    runs-on: ubuntu-latest
+    runs-on: blacksmith-4vcpu-ubuntu-2204
     environment: update-docs
     strategy:
       fail-fast: false

@@ -31,7 +31,7 @@ jobs:
   auto-request-review:
     name: Auto Request Review
     if: ${{ !github.event.pull_request.draft && !startsWith(github.head_ref, 'dependabot/') }}
-    runs-on: ubuntu-latest
+    runs-on: blacksmith-4vcpu-ubuntu-2204
     steps:
       # Checkout main branch of shared-workflow repository.
       - name: Checkout shared-workflow
@@ -41,7 +41,7 @@ jobs:
           path: .github/shared-workflows
           ref: main
       - name: Installing Go
-        uses: actions/setup-go@v5
+        uses: useblacksmith/setup-go@v6
         with:
           go-version: 'stable'
         # Run "check" subcommand on bot.

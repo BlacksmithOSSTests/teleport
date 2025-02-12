@@ -16,7 +16,7 @@ on:
 jobs:
   bloat_check:
     name: Bloat Check
-    runs-on: ubuntu-latest
+    runs-on: blacksmith-4vcpu-ubuntu-2204
     outputs:
       base_stats_file: ${{ steps.build_base.outputs.base_stats_file }}
       current_build_dir: ${{ steps.build_branch.outputs.build_dir }}
@@ -44,7 +44,7 @@ jobs:
           ref: main
 
       - name: Setup base cache
-        uses: actions/cache/restore@v3
+        uses: useblacksmith/cache/restore@v5
         id: cache-build-restore
         with:
           path: |
@@ -70,7 +70,7 @@ jobs:
       - if: ${{ steps.cache-build-restore.outputs.cache-hit != 'true' }}
         name: Save base build
         id: base-build-save
-        uses: actions/cache/save@v3
+        uses: useblacksmith/cache/save@v5
         with:
           path: |
             ${{ steps.build_base.outputs.base_stats_file }}
