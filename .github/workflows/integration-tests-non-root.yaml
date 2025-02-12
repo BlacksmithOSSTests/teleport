@@ -81,4 +81,7 @@ jobs:
 
       - name: Run tests
         timeout-minutes: 40
-        run: runuser -u ci -g ci make integration RDPCLIENT_SKIP_BUILD=1
+        run: |
+          CORES=$(nproc)
+          echo "Using $CORES cores for parallel execution"
+          runuser -u ci -g ci make integration FLAGS="-v -p $CORES -shuffle on"
