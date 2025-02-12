@@ -82,6 +82,6 @@ jobs:
       - name: Run tests
         timeout-minutes: 40
         run: |
-          CORES=$(nproc)
+          CORES=$(( $(nproc) / 2 ))
           echo "Using $CORES cores for parallel execution"
           runuser -u ci -g ci make integration FLAGS="-v -p $CORES -shuffle on"
