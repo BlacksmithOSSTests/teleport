@@ -7,7 +7,7 @@ on:
 jobs:
   changes:
     name: Check for relevant changes
-    runs-on: ubuntu-latest
+    runs-on: blacksmith-4vcpu-ubuntu-2204
     permissions:
       pull-requests: read
     outputs:
@@ -30,7 +30,7 @@ jobs:
     name: OS Compatibility Build
     needs: changes
     if: ${{ !startsWith(github.head_ref, 'dependabot/') && needs.changes.outputs.changed == 'true' }}
-    runs-on: ubuntu-22.04-16core
+    runs-on: blacksmith-16vcpu-ubuntu-2204
 
     permissions:
       contents: read
@@ -64,7 +64,7 @@ jobs:
   test-compat:
     needs: build
     name: OS Compatibility Test
-    runs-on: ubuntu-latest
+    runs-on: blacksmith-4vcpu-ubuntu-2204
 
     permissions:
       contents: read

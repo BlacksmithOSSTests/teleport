@@ -8,7 +8,7 @@ on:
 jobs:
   changes:
     name: Check for relevant changes
-    runs-on: ubuntu-latest
+    runs-on: blacksmith-4vcpu-ubuntu-2204
     permissions:
       pull-requests: read
     outputs:
@@ -32,7 +32,7 @@ jobs:
   test:
     name: Unit Tests (Helm)
     needs: changes
-    runs-on: ubuntu-latest
+    runs-on: blacksmith-4vcpu-ubuntu-2204
     if: ${{ !startsWith(github.head_ref, 'dependabot/') && needs.changes.outputs.changed == 'true' }}
 
     permissions:

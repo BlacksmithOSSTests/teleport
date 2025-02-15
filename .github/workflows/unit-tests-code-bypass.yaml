@@ -34,7 +34,7 @@ on:
 jobs:
   test:
     name: Unit Tests (Go)
-    runs-on: ubuntu-latest
+    runs-on: blacksmith-4vcpu-ubuntu-2204
 
     permissions:
       contents: none

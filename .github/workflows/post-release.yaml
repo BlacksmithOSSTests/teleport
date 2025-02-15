@@ -17,7 +17,7 @@ jobs:
     outputs:
       type: ${{ steps.artifacts.outputs.type }}
       version: ${{ steps.artifacts.outputs.version }}
-    runs-on: ubuntu-latest
+    runs-on: blacksmith-4vcpu-ubuntu-2204
 
     steps:
       - name: Checkout repository
@@ -54,7 +54,7 @@ jobs:
 
   update-docs-version:
     name: Update docs version
-    runs-on: ubuntu-latest
+    runs-on: blacksmith-4vcpu-ubuntu-2204
     environment: post-release
     steps:
       - name: Get Release Branch

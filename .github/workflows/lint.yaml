@@ -9,7 +9,7 @@ env:
 jobs:
   changes:
     name: Check for relevant changes
-    runs-on: ubuntu-latest
+    runs-on: blacksmith-4vcpu-ubuntu-2204
     permissions:
       pull-requests: read
     outputs:
@@ -75,7 +75,7 @@ jobs:
     name: Lint (Go)
     needs: changes
     if: ${{ !startsWith(github.head_ref, 'dependabot/') && needs.changes.outputs.has_go == 'true' }}
-    runs-on: ubuntu-22.04-16core
+    runs-on: blacksmith-16vcpu-ubuntu-2204
 
     permissions:
       contents: read
@@ -158,7 +158,7 @@ jobs:
 
   lint-rust:
     name: Lint (Rust)
-    runs-on: ubuntu-22.04
+    runs-on: blacksmith-4vcpu-ubuntu-2204
     needs: changes
     if: ${{ !startsWith(github.head_ref, 'dependabot/') && needs.changes.outputs.has_rust == 'true' }}
 
@@ -189,7 +189,7 @@ jobs:
     name: Lint (Proto)
     needs: changes
     if: ${{ !startsWith(github.head_ref, 'dependabot/') && needs.changes.outputs.has_proto == 'true' }}
-    runs-on: ubuntu-22.04-16core
+    runs-on: blacksmith-16vcpu-ubuntu-2204
 
     permissions:
       contents: read
@@ -241,7 +241,7 @@ jobs:
     name: Lint (RFD)
     needs: changes
     if: ${{ !startsWith(github.head_ref, 'dependabot/') && needs.changes.outputs.has_rfd == 'true' }}
-    runs-on: ubuntu-22.04
+    runs-on: blacksmith-4vcpu-ubuntu-2204
 
     permissions:
       contents: read
