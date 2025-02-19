@@ -9,7 +9,7 @@ on:
 jobs:
   changes:
     name: Check for relevant changes
-    runs-on: ubuntu-latest
+    runs-on: blacksmith-4vcpu-ubuntu-2204
     permissions:
       pull-requests: read
     outputs:
@@ -37,7 +37,7 @@ jobs:
     name: Integration Tests (Non-root)
     needs: changes
     if: ${{ !startsWith(github.head_ref, 'dependabot/') && needs.changes.outputs.changed == 'true' }}
-    runs-on: ubuntu-22.04-16core
+    runs-on: blacksmith-16vcpu-ubuntu-2204
 
     permissions:
       contents: read
@@ -81,4 +81,7 @@ jobs:
 
       - name: Run tests
         timeout-minutes: 40
-        run: runuser -u ci -g ci make integration RDPCLIENT_SKIP_BUILD=1
+        run: |
+          CORES=$(nproc)
+          echo "Using $CORES cores for parallel execution"
+          runuser -u ci -g ci make integration FLAGS="-v -p $CORES -shuffle on"

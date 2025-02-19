@@ -32,7 +32,7 @@ permissions:
 jobs:
   dismiss-stale-runs:
     name: Dismiss Stale Workflow Runs
-    runs-on: ubuntu-latest
+    runs-on: blacksmith-4vcpu-ubuntu-2204
     steps:
       # Checkout main branch of shared-workflow repository.
       - name: Checkout shared-workflow
@@ -42,7 +42,7 @@ jobs:
           path: .github/shared-workflows
           ref: main
       - name: Installing Go
-        uses: actions/setup-go@v5
+        uses: useblacksmith/setup-go@v6
         with:
           go-version: 'stable'
         # Run "dismiss" subcommand on bot.

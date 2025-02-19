@@ -28,7 +28,7 @@ on:
 jobs:
   lint:
     name: Prettier, ESLint, & TSC
-    runs-on: ubuntu-latest
+    runs-on: blacksmith-4vcpu-ubuntu-2204
     container:
       image: ghcr.io/gravitational/teleport-buildbox:teleport17
     steps:

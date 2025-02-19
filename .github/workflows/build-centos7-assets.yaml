@@ -12,7 +12,7 @@ jobs:
   buildbox-centos7-assets:
     name: Build CentOS 7 Asset Buildbox
     # Build assets on x86 for now, as no GHA-hosted runner for ARM64.
-    runs-on: ubuntu-22.04-32core
+    runs-on: blacksmith-32vcpu-ubuntu-2204
 
     permissions:
       contents: read

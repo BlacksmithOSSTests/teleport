@@ -29,7 +29,7 @@ jobs:
   test:
     name: Unit Tests (Go)
     if: ${{ !startsWith(github.head_ref, 'dependabot/') }}
-    runs-on: ubuntu-22.04-32core
+    runs-on: blacksmith-32vcpu-ubuntu-2204
 
     permissions:
       contents: read

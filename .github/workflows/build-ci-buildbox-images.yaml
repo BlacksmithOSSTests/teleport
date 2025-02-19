@@ -21,7 +21,7 @@ env:
 jobs:
   buildbox:
     name: Build Ubuntu Buildbox
-    runs-on: ubuntu-22.04-32core
+    runs-on: blacksmith-32vcpu-ubuntu-2204
 
     permissions:
       contents: read
@@ -49,7 +49,7 @@ jobs:
 
   buildbox-arm:
     name: Build Debian ARM Buildbox
-    runs-on: ubuntu-22.04-32core
+    runs-on: blacksmith-32vcpu-ubuntu-2204
 
     permissions:
       contents: read
@@ -78,7 +78,7 @@ jobs:
   buildbox-centos7:
     name: Build CentOS 7 Buildbox
     # Build assets on x86 for now, as no GHA-hosted runner for ARM64.
-    runs-on: ubuntu-22.04-32core
+    runs-on: blacksmith-32vcpu-ubuntu-2204
 
     permissions:
       contents: read
@@ -107,7 +107,7 @@ jobs:
   buildbox-centos7-fips:
     name: Build CentOS 7 FIPS Buildbox
     # Build assets on x86 for now, as no GHA-hosted runner for ARM64.
-    runs-on: ubuntu-22.04-32core
+    runs-on: blacksmith-32vcpu-ubuntu-2204
 
     permissions:
       contents: read
@@ -135,7 +135,7 @@ jobs:
 
   buildbox-node:
     name: Build Node.js Buildbox
-    runs-on: ubuntu-22.04-32core
+    runs-on: blacksmith-32vcpu-ubuntu-2204
 
     permissions:
       contents: read
